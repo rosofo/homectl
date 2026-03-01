@@ -1,0 +1,8 @@
+version: v1
+integrations:
+  - type: matter-server
+    name: matter
+    websocket: "test"
+  - type: matter-server
+    name: matter2
+    websocket: "${TEST_ENV_VAR:default value}"
