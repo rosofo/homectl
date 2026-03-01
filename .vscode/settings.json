@@ -1,0 +1,7 @@
+{
+    "go.goroot": "/home/mini/.local/share/mise/installs/go/1.25.5",
+    "python.defaultInterpreterPath": "/home/mini/.local/share/mise/installs/python/3.13.9/bin/python",
+    "go.alternateTools": {
+        "go": "/home/mini/.local/share/mise/shims/go"
+    }
+}

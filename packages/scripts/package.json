@@ -1,0 +1,25 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "prettier:fix": "prettier --write .",
+    "prettier:check": "prettier --check .",
+    "generate:otbr-posix-api": "tsx ./src/generate-otbr-api.ts '3e5478aa9f2a29336ee0187f7c5294d5b875fc6d' && pnpm --dir ../otbr-posix-api prettier:fix && pnpm --dir ../otbr-posix-api build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.15.1",
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "openapi-typescript": "^7.13.0",
+    "prettier": "^3.8.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "yaml": "^2.8.2"
+  }
+}

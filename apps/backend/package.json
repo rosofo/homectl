@@ -17,6 +17,8 @@
   "packageManager": "pnpm@10.15.1",
   "dependencies": {
     "fastify": "^5.7.4",
+    "openapi-fetch": "^0.17.0",
+    "otbr-posix-api": "workspace:*",
     "pino": "^10.3.1",
     "utils": "workspace:*",
     "yaml": "^2.8.2",

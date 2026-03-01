@@ -5,7 +5,19 @@ const matterIntegration = z.object({
   name: z.string(),
   websocket: z.string(),
 });
-const integration = z.discriminatedUnion("type", [matterIntegration]);
+export type MatterIntegration = z.infer<typeof matterIntegration>;
+
+const otbrIntegration = z.object({
+  type: z.literal("otbr-rest"),
+  name: z.string(),
+  restEndpoint: z.string(),
+});
+export type OtbrIntegration = z.infer<typeof otbrIntegration>;
+const integration = z.discriminatedUnion("type", [
+  matterIntegration,
+  otbrIntegration,
+]);
+export type Integration = z.infer<typeof integration>;
 
 // TODO: Not happy with config yet :eek:
 const configV1 = z.object({
