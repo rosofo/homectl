@@ -1,8 +1,6 @@
 import Fastify from "fastify";
-import { integrationsOfType, loadConfig } from "./config";
-import { getLogger, initLogger } from "./logger";
-import createClient, { type Client } from "openapi-fetch";
-import { type paths as otbrPaths } from "otbr-posix-api";
+import { loadConfig } from "./config";
+import { initLogger } from "./logger";
 import { loadIntegrations, OtbrRestService } from "./integrations";
 
 export interface EnvVars {
@@ -15,12 +13,11 @@ export async function main(configPath: string, envVars: EnvVars) {
   logger.info("Logging initalized!");
   logger.info(config);
 
-  const integration = integrationsOfType(config.integrations, "otbr-rest")[0];
-  if (integration !== undefined) {
-  }
+  // const integration = integrationsOfType(config.integrations, "otbr-rest")[0];
   // TODO: Pretty sure none of this is actually run-time type checked, so uhhhh do that at some point plz
   const services = await loadIntegrations(config.integrations);
-  for (const [name, otbr] of services.getServicesOfType(OtbrRestService)) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  for (const [_, otbr] of services.getServicesOfType(OtbrRestService)) {
     const result = await otbr.client.GET("/node/network-name");
     const data = result.data;
     console.log(data);

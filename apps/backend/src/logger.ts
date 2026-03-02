@@ -1,9 +1,8 @@
-import type { Config } from "./config";
 import { pino, type Logger } from "pino";
 
 let logger: Logger | undefined = undefined;
 
-export function initLogger(config: Config): Logger {
+export function initLogger(): Logger {
   if (logger !== undefined) {
     throw new Error("TODO: Double init");
   }
