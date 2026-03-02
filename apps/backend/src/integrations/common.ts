@@ -13,7 +13,7 @@ export abstract class Service {
   abstract get name(): string;
 }
 
-export type Class<T> = new (...args: any[]) => T;
+export type Class<T> = new (...args: unknown[]) => T;
 
 export class InstanceCatalog<B = unknown> {
   instances: Map<string, B>;
@@ -77,7 +77,6 @@ export async function loadIntegrations(
   const map: Map<string, Service> = new Map();
   const promises = integrations.map(async (integration) => {
     const generator = integrationGenerators[integration.type];
-    // @ts-ignore
     const promise = await generator(integration);
     getLogger().info(
       `Setup integration '${integration.name}' of type '${integration.type}'`,

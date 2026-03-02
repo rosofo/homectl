@@ -2,7 +2,6 @@ import type { PathLike } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { parse } from "yaml";
 import { type Json, recurseJson } from "utils";
-import { env } from "node:process";
 import z from "zod";
 import { configSchema, type Config } from "./schema";
 
@@ -10,7 +9,7 @@ function preprocess(yamlContents: Json, envProvider: EnvProvider): Json {
   return recurseJson(yamlContents, (primitive) => {
     if (typeof primitive !== "string") return undefined;
     return primitive.replaceAll(
-      /(\\\$|\$){([A-Za-z0-9_-]+)(?:\:(.+))?}/g,
+      /(\\\$|\$){([A-Za-z0-9_-]+)(?::(.+))?}/g,
       (match, dollar, envQuery, defaultVal) => {
         if (
           typeof dollar !== "string" ||
