@@ -77,7 +77,7 @@ export async function loadIntegrations(
   const map: Map<string, Service> = new Map();
   const promises = integrations.map(async (integration) => {
     const generator = integrationGenerators[integration.type];
-    // @ts-ignore
+    // @ts-expect-error dunno
     const promise = await generator(integration);
     getLogger().info(
       `Setup integration '${integration.name}' of type '${integration.type}'`,
