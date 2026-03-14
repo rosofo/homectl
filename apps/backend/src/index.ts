@@ -5,4 +5,4 @@ const configPath = env["CONFIG_FILE"];
 if (configPath === undefined) {
   throw new Error("'CONFIG_FILE' env var is required but was not provided");
 }
-await main(configPath, { ...env });
+main(configPath, { ...env });

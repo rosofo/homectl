@@ -2,7 +2,7 @@ import { pino, type Logger } from "pino";
 
 let logger: Logger | undefined = undefined;
 
-export function initLogger(): Logger {
+export function initLogger(config: object): Logger {
   if (logger !== undefined) {
     throw new Error("TODO: Double init");
   }

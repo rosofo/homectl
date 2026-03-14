@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "tsc",
+    "run": "CONFIG_FILE=./dev-config.yaml node dist/index.js | pino-pretty",
     "dev": "CONFIG_FILE=./dev-config.yaml tsx src/index.ts | pino-pretty",
     "prettier:fix": "prettier --write .",
     "prettier:check": "prettier --check .",
